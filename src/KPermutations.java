@@ -1,14 +1,13 @@
-import java.util.Scanner;
-
-public class Permutations {
+public class KPermutations {
     private static final String ALPHABET = "abcdefghijklmnopqrstuvqxyz";
-    private static int n;
 
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
+        int k = Integer.parseInt(args[1]);
+
         String letters = ALPHABET.substring(0, n);
-        for (int i = n; i >= 0; i--)
-            permute(letters, i, "");
+
+        permute(letters, k, "");
     }
 
     private static void permute(String letters, int index, String collection) {
