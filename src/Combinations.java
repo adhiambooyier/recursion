@@ -14,23 +14,20 @@ public class Combinations {
 
     public static void main(String[] args) {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter a number n: ");
-        int n = input.nextInt();
-        List<String> lettersToCombine = new ArrayList<>();
-        while (n >= 1) {
-            String letter = Character.toString(alphabet.charAt(n - 1));
-            lettersToCombine.add(letter);
-            n = n - 1;
-        }
-        System.out.println(lettersToCombine.toString());
-        combine(lettersToCombine, n);
+        int n = Integer.parseInt(args[0]);
+        String lettersToCombine = alphabet.substring(0, n);
+        System.out.println(lettersToCombine);
+
+        for (int i = n; i >= 0; i--)
+            combine(lettersToCombine, i, "");
     }
 
-    private static void combine(List<String> letters, int n) {
-        if (n == 1){
-            System.out.println(letters.get(n));
+    private static void combine(String letters, int n, String combination) {
+        if (n == 0) {
+            System.out.println(combination);
+            return;
         }
-        combine(letters, --n);
+        for (int i = 0; i < letters.length(); i++)
+            combine(letters, n - 1, combination + letters.charAt(i));
     }
 }

@@ -4,10 +4,9 @@ public class KPermutations {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int k = Integer.parseInt(args[1]);
-
         String letters = ALPHABET.substring(0, n);
-
-        permute(letters, k, "");
+        for (int i = n; i >= 0; i--)
+            permute(letters, k, "");
     }
 
     private static void permute(String letters, int index, String collection) {
@@ -16,6 +15,6 @@ public class KPermutations {
             return;
         }
         for (int i = 0; i < letters.length(); i++)
-            permute(letters, index - 1, collection + letters.charAt(i));
+            permute(letters, index-1, collection + letters.charAt(i));
     }
 }

@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Permutations {
     private static final String ALPHABET = "abcdefghijklmnopqrstuvqxyz";
-    private static int n;
 
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
@@ -17,6 +16,6 @@ public class Permutations {
             return;
         }
         for (int i = 0; i < letters.length(); i++)
-            permute(letters, index - 1, collection + letters.charAt(i));
+            permute(letters, index, collection + letters.charAt(i));
     }
 }
