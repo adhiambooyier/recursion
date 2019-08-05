@@ -5,6 +5,13 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class PancakeFlipping {
+    /*
+    You have a stack of n pancakes of varying sizes on a grid-
+dle. Your goal is to rearrange the stack in order so that the largest pancake is on
+the bottom and the smallest one is on top. You are only permitted to flip the top k
+pancakes, thereby reversing their order. Devise a recursive scheme to arrange the
+pancakes in the proper order that uses at most 2n - 3 flips.
+     */
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int k = Integer.parseInt(args[1]);
