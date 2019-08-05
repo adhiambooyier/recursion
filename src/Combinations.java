@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Combinations {
     /*
     Combinations. Write a program Combinations that takes an integer command-line argument n

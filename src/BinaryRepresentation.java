@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class BinaryRepresentation {
     /*Binary representation. Write a program that takes a positive integer n (in
@@ -9,9 +8,7 @@ the following simpler method: repeatedly divide 2 into n and read the remainders
 backward. First, write a while loop to carry out this computation and print the bits
 in the wrong order. Then, use recursion to print the bits in the correct order.*/
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter a number n: ");
-        int n = input.nextInt();
+        int n = Integer.parseInt(args[0]);
         List<Integer> wrongOrderBits = new ArrayList<>();
 
         while (n >= 1) {

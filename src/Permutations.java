@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Permutations {
     private static final String ALPHABET = "abcdefghijklmnopqrstuvqxyz";
 
