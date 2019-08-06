@@ -23,15 +23,22 @@ public class Main {
                 Combinations.main(null);
                 break;
 
-            /* case 4:
-                Ex4.main(null);
+             case 4:
+                Permutations.main(null);
                 break;
 
             case 5:
-                Ex5.main(null);
-                break;*/
-
+                PancakeFlipping.main(null);
+                break;
             case 6:
+                HammingDistance.main(null);
+                break;
+
+            case 7:
+                Collatz.main(null);
+                break;
+
+            case 8:
                 break;
 
             default:
