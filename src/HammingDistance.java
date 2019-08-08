@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class HammingDistance {
     /*
@@ -18,38 +21,35 @@ Hint : Choose k of the bits in s to flip.
         flip(s, k);
     }
 
-    private static void flip(String s, int k) {
-        List<Integer> sList = new ArrayList<>();
-        List<Integer> flipList = new ArrayList<>();
-        List<Integer> unchangedList = new ArrayList<>();
-        List<Integer> newList = new ArrayList<>();
-        List<Integer> finalList = new ArrayList<>();
-
-        for (int i = 0; i < s.length(); i++)
-            sList.add(Integer.parseInt(s.substring(i, i+1)));
-        System.out.println("s"+ sList);
-
-        for (int i = 0; i < k; i++)
-            flipList.add(sList.get(i));
-        System.out.println("f"+flipList);
-
-        for (int i = sList.size(); i > k; i--)
-            unchangedList.add(sList.get(i-1));
-        System.out.println("u"+unchangedList);
-
-        for (int i = 0; i < flipList.size(); i++) {
-            int targetInt = flipList.get(i);
-            if (targetInt == 0) {
-                newList.add((targetInt + 1));
-            } else
-                newList.add(targetInt - 1);
-        }
-        System.out.println("n" +newList);
-
-        finalList.addAll(newList);
-        finalList.addAll(unchangedList);
-
-        System.out.println("fn" +finalList);
+   static char flip(char c) { return c - 1; }
+    static String flipS(String s, int i) {
+        return s.substring(0, i) + flip(s.charAt(i)) + s.subString(i + 1, s.length -1);
     }
+
+   static String[] hamming(String s, int k) {
+       if (k > 1) {
+           char c = s.charAt(s.length() - 1);
+           List<String> s1;
+           if (s.length()>k) {
+               s1 = Arrays.stream(hamming(s.substring(s.length() - 1), k))
+                       .map(y -> y + c)
+                       .collect(Collectors.toList());
+           } else {
+               s1 = new ArrayList<>();
+           }
+
+           List<String> s2 = Arrays.stream(hamming(s.substring(s.length() - 1), k-1))
+                   .map(y -> y + flip(c))
+                   .collect(Collectors.toList());
+
+           List<String> r = new ArrayList<>(s1);
+           r.addAll(s2);
+           return r.toArray(new String[0]);
+       }
+
+       return IntStream.range(0, s.length())
+               .map(i -> flipS(s, i))
+               .toArray(int[]::new);
+   }
 }
 

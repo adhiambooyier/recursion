@@ -14,4 +14,7 @@ public class PaintingHouses {
         int k = Integer.parseInt(args[1]);
 
     }
+    public  static void paint(){
+
+    }
 }
