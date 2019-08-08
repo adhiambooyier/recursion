@@ -18,38 +18,43 @@ Hint : Choose k of the bits in s to flip.
     public static void main(String[] args) {
         String s = args[0];
         int k = Integer.parseInt(args[1]);
-        flip(s, k);
+        System.out.println(Arrays.toString(hamming(s, k)));
+
     }
 
-   static char flip(char c) { return c - 1; }
+    static int flip(char c) {
+        String sc = Character.toString(c);
+        return Integer.parseInt(sc) - 1;
+    }
+
     static String flipS(String s, int i) {
-        return s.substring(0, i) + flip(s.charAt(i)) + s.subString(i + 1, s.length -1);
+        return s.substring(0, i) + flip(s.charAt(i)) + s.substring(i + 1);
     }
 
-   static String[] hamming(String s, int k) {
-       if (k > 1) {
-           char c = s.charAt(s.length() - 1);
-           List<String> s1;
-           if (s.length()>k) {
-               s1 = Arrays.stream(hamming(s.substring(s.length() - 1), k))
-                       .map(y -> y + c)
-                       .collect(Collectors.toList());
-           } else {
-               s1 = new ArrayList<>();
-           }
+    static String[] hamming(String s, int k) {
+        if (k > 1) {
+            char c = s.charAt(s.length() - 1);
+            List<String> s1;
+            if (s.length() > k) {
+                s1 = Arrays.stream(hamming(s.substring(s.length() - 1), k))
+                        .map(y -> y + c)
+                        .collect(Collectors.toList());
+            } else {
+                s1 = new ArrayList<>();
+            }
 
-           List<String> s2 = Arrays.stream(hamming(s.substring(s.length() - 1), k-1))
-                   .map(y -> y + flip(c))
-                   .collect(Collectors.toList());
+            List<String> s2 = Arrays.stream(hamming(s.substring(s.length() - 1), k - 1))
+                    .map(y -> y + flip(c))
+                    .collect(Collectors.toList());
 
-           List<String> r = new ArrayList<>(s1);
-           r.addAll(s2);
-           return r.toArray(new String[0]);
-       }
+            List<String> r = new ArrayList<>(s1);
+            r.addAll(s2);
+            return r.toArray(new String[0]);
+        }
 
-       return IntStream.range(0, s.length())
-               .map(i -> flipS(s, i))
-               .toArray(int[]::new);
-   }
+        return  IntStream.range(0, s.length())
+                .mapToObj(i -> flipS(s, i))
+                .toArray(String[]::new);
+    }
 }
 
