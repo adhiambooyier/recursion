@@ -18,13 +18,39 @@ Hint : Choose k of the bits in s to flip.
     public static void main(String[] args) {
         String s = args[0];
         int k = Integer.parseInt(args[1]);
-        System.out.println(Arrays.toString(hamming(s, k)));
+        int i = Integer.parseInt(args[2]);
+        int j = Integer.parseInt(args[3]);
+
+        System.out.println(select(s, k, i, j));
 
     }
 
-    static int flip(char c) {
-        String sc = Character.toString(c);
-        return Integer.parseInt(sc) - 1;
+    static String flip(char c) {
+        if (c == '0') {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
+    static List<String> select(String original, int k, int count, int skip) {
+        count = 0;
+        skip = 1;
+        List<String> newList = new ArrayList<>();
+        String flippedChar;
+
+        if (count == 0) {
+            flippedChar = flip(original.charAt(count));
+            StringBuilder str = new StringBuilder(flippedChar);
+            StringBuilder newString = str.append(original.substring(skip));
+            newList.add(newString.toString());
+            count++;
+        } else {
+            while (skip < k) {
+                select(original, k, count, skip++);
+            }
+        }
+        return newList;
     }
 
     static String flipS(String s, int i) {
@@ -52,7 +78,7 @@ Hint : Choose k of the bits in s to flip.
             return r.toArray(new String[0]);
         }
 
-        return  IntStream.range(0, s.length())
+        return IntStream.range(0, s.length())
                 .mapToObj(i -> flipS(s, i))
                 .toArray(String[]::new);
     }

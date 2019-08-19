@@ -9,12 +9,14 @@ public class PaintingHouses {
     • green(i) = min cost to paint houses 1, 2, ..., i so that the house i is green
     • blue(i)     = min cost to paint houses 1, 2, ..., i so that the house i is blue
      */
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int k = Integer.parseInt(args[1]);
-
+        paint(n, k);
     }
-    public  static void paint(){
 
-    }
+   public static void paint(int houses, int color) {
+        char r, g, b;
+        if()
+    }*/
 }

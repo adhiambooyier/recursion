@@ -12,7 +12,7 @@ public class Main {
         int question = input.nextInt();
         switch (question) {
             case 1:
-                Induction.main(null);
+                NumberFamily.main(null);
                 break;
 
             case 2:
